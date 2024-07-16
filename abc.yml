@@ -1,0 +1,39 @@
+pipeline:
+  identifier: ag
+  name: ag
+  orgIdentifier: default
+  projectIdentifier: aryanci
+  properties:
+    ci:
+      codebase:
+        connectorRef: agtest1
+        build: <+input>
+  stages:
+    - stage:
+        identifier: build
+        name: build
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - stepGroup:
+                  identifier: abc
+                  name: readJSON
+                  steps:
+                    - step:
+                        identifier: readjsonf26379
+                        name: readJSON
+                        spec:
+                          command: "echo '{ \"key\": \"value\" }'"
+                          shell: Sh
+                        timeout: ""
+                        type: Run
+                  timeout: ""
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+        type: CI
+
